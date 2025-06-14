@@ -1,0 +1,714 @@
+<html class="scroll-smooth" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Leonora's Bahay - Home Selling Platform
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gradient-to-b from-yellow-50 to-red-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+   <div class="max-w-7xl mx-auto flex items-center justify-between p-4 md:p-6">
+    <div class="flex items-center space-x-3">
+     <img alt="Philippine flag icon with red, blue, white, and yellow sun and stars" class="w-12 h-8 object-contain rounded-sm" draggable="false" height="32" src="https://storage.googleapis.com/a1aa/image/66c75d97-441e-42aa-d12b-7dab731e530f.jpg" width="48"/>
+     <h1 class="text-2xl font-extrabold text-red-700 select-none">
+      Leonora's Bahay
+     </h1>
+    </div>
+    <nav class="hidden md:flex space-x-8 font-semibold text-red-700">
+     <a class="hover:text-red-900 transition duration-300" href="#presentation">
+      Presentation
+     </a>
+     <a class="hover:text-red-900 transition duration-300" href="#listings">
+      Listings
+     </a>
+     <a class="hover:text-red-900 transition duration-300" href="#contact">
+      Contact
+     </a>
+     <button aria-controls="postSection" aria-expanded="false" class="bg-red-700 text-white px-4 py-2 rounded-md hover:bg-red-800 transition duration-300" id="togglePostBtn">
+      Post a House
+     </button>
+    </nav>
+    <button aria-label="Toggle menu" class="md:hidden text-red-700 hover:text-red-900 focus:outline-none" id="mobileMenuBtn">
+     <i class="fas fa-bars fa-lg">
+     </i>
+    </button>
+   </div>
+   <nav aria-label="Mobile menu" class="hidden md:hidden bg-white border-t border-red-200" id="mobileMenu">
+    <a class="block px-6 py-3 text-red-700 font-semibold hover:bg-red-50" href="#presentation">
+     Presentation
+    </a>
+    <a class="block px-6 py-3 text-red-700 font-semibold hover:bg-red-50" href="#listings">
+     Listings
+    </a>
+    <a class="block px-6 py-3 text-red-700 font-semibold hover:bg-red-50" href="#contact">
+     Contact
+    </a>
+    <button aria-controls="postSection" aria-expanded="false" class="w-full text-left px-6 py-3 text-red-700 font-semibold hover:bg-red-50" id="togglePostBtnMobile">
+     Post a House
+    </button>
+   </nav>
+  </header>
+  <!-- Main Content -->
+  <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+   <!-- Presentation Section -->
+   <section class="mb-16 bg-white rounded-lg shadow-md p-6 md:p-10" id="presentation" lang="en">
+    <h2 class="text-3xl font-extrabold text-red-700 mb-4">
+     Welcome to Leonora's Bahay!
+    </h2>
+    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+     Discover your dream home in Santa Rosa City, Laguna with Leonora's
+        Bahay — your trusted home-selling platform. We connect buyers and sellers
+        with ease and security. Browse beautiful houses, detailed listings, and
+        get in touch with us for personalized assistance.
+    </p>
+    <p class="text-gray-700 text-lg leading-relaxed">
+     Whether you're looking for a cozy starter home or a spacious family
+        residence, Leonora's Bahay is here to help you find the perfect place to
+        call your own.
+    </p>
+   </section>
+   <section class="mb-16 bg-white rounded-lg shadow-md p-6 md:p-10 hidden" id="presentation-fil" lang="fil">
+    <h2 class="text-3xl font-extrabold text-red-700 mb-4">
+     Maligayang Pagdating sa Leonora's Bahay
+    </h2>
+    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+     Tuklasin ang iyong pangarap na bahay sa Lungsod ng Santa Rosa, Laguna
+        kasama ang Leonora's Bahay — ang iyong pinagkakatiwalaang platforma sa
+        pagbebenta ng bahay. Pinag-uugnay namin ang mga mamimili at nagbebenta nang
+        madali at ligtas. Mag-browse ng magagandang bahay, detalyadong listahan,
+        at makipag-ugnayan sa amin para sa personal na tulong.
+    </p>
+    <p class="text-gray-700 text-lg leading-relaxed">
+     Kung naghahanap ka man ng maliit na bahay para sa panimula o maluwag na
+        tirahan para sa pamilya, nandito ang Leonora's Bahay upang tulungan kang
+        mahanap ang perpektong lugar na tatawaging tahanan.
+    </p>
+   </section>
+   <!-- Listings Section -->
+   <section class="mb-16" id="listings">
+    <h2 class="text-3xl font-extrabold text-red-700 mb-8 text-center">
+     House Listings
+    </h2>
+    <div aria-live="polite" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="postsContainer">
+     <!-- Posts will be dynamically inserted here -->
+    </div>
+   </section>
+   <!-- Contact Section -->
+   <section class="mb-16 bg-white rounded-lg shadow-md p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8" id="contact">
+    <div class="flex items-center space-x-4">
+     <img alt="Philippine flag icon with red, blue, white, and yellow sun and stars" class="w-16 h-12 object-contain rounded-sm" draggable="false" height="64" src="https://storage.googleapis.com/a1aa/image/66c75d97-441e-42aa-d12b-7dab731e530f.jpg" width="64"/>
+     <div>
+      <h3 class="text-2xl font-extrabold text-red-700 mb-1">
+       Contact Leonora's Bahay
+      </h3>
+     </div>
+    </div>
+    <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row">
+     <a class="flex items-center space-x-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-semibold transition duration-300" href="https://www.facebook.com/leonora.papua.2025" rel="noopener noreferrer" target="_blank">
+      <i class="fab fa-facebook-f">
+      </i>
+      <span>
+       Facebook
+      </span>
+     </a>
+     <a class="flex items-center space-x-2 px-5 py-3 bg-red-600 hover:bg-red-700 text-white rounded-md font-semibold transition duration-300" href="https://smdc.com/properties/" rel="noopener noreferrer" target="_blank">
+      <i class="fas fa-briefcase">
+      </i>
+      <span>
+       Job Website
+      </span>
+     </a>
+    </div>
+   </section>
+   <!-- Language Toggle -->
+   <section class="mb-16 flex justify-center space-x-4">
+    <button aria-pressed="true" class="px-6 py-2 rounded-md bg-red-700 text-white font-semibold hover:bg-red-800 transition duration-300" id="btnEnglish">
+     English
+    </button>
+    <button aria-pressed="false" class="px-6 py-2 rounded-md bg-gray-300 text-gray-800 font-semibold hover:bg-gray-400 transition duration-300" id="btnFilipino">
+     Filipino
+    </button>
+   </section>
+   <!-- Hidden Post Section -->
+   <section aria-label="Post a new house listing" class="hidden max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6 md:p-10 mb-16" id="postSection">
+    <h2 class="text-3xl font-extrabold text-red-700 mb-6 text-center">
+     Post a New House Listing
+    </h2>
+    <form class="space-y-6" id="postForm" novalidate="">
+     <div>
+      <label class="block text-red-700 font-semibold mb-1" for="postPassword">
+       Password
+      </label>
+      <input aria-describedby="passwordHelp" autocomplete="off" class="w-full border border-red-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" id="postPassword" name="postPassword" required="" type="password"/>
+      <p class="text-sm text-gray-500 mt-1" id="passwordHelp">
+       Enter the password to post or delete listings.
+      </p>
+     </div>
+     <div>
+      <label class="block text-red-700 font-semibold mb-1" for="captchaQuestion">
+       Captcha:
+       <span class="inline-block font-mono" id="captchaText">
+       </span>
+      </label>
+      <input aria-describedby="captchaHelp" autocomplete="off" class="w-full border border-red-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" id="captchaAnswer" name="captchaAnswer" required="" type="text"/>
+      <p class="text-sm text-gray-500 mt-1" id="captchaHelp">
+       Solve the captcha to verify you are human.
+      </p>
+     </div>
+     <div>
+      <label class="block text-red-700 font-semibold mb-1" for="postAddress">
+       Address
+      </label>
+      <input class="w-full border border-red-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" id="postAddress" maxlength="200" name="postAddress" placeholder="e.g. 123 Mabini St, Santa Rosa City, Laguna" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block text-red-700 font-semibold mb-1" for="postDescription">
+       Description (max 1000 characters)
+      </label>
+      <textarea class="w-full border border-red-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500 resize-none" id="postDescription" maxlength="1000" name="postDescription" placeholder="Describe the house, features, and surroundings" required="" rows="5"></textarea>
+      <p class="text-sm text-gray-500 mt-1 text-right" id="descCount">
+       0 / 1000
+      </p>
+     </div>
+     <div>
+      <label class="block text-red-700 font-semibold mb-1" for="postPrice">
+       Price (PHP)
+      </label>
+      <input class="w-full border border-red-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" id="postPrice" min="0" name="postPrice" placeholder="e.g. 3500000" required="" step="1000" type="number"/>
+     </div>
+     <div>
+      <label class="block text-red-700 font-semibold mb-1" for="postImages">
+       Upload Images (from 1 to 3)
+      </label>
+      <input accept="image/*" aria-describedby="imageHelp" capture="environment" class="w-full" id="postImages" multiple="" name="postImages" required="" type="file"/>
+      <p class="text-sm text-gray-500 mt-1" id="imageHelp">
+       You can upload up to 3 images of the house.
+      </p>
+     </div>
+     <div class="flex justify-center space-x-6">
+      <button class="bg-red-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-red-800 transition duration-300" type="submit">
+       Post Listing
+      </button>
+      <button class="bg-gray-300 text-gray-800 px-6 py-3 rounded-md font-semibold hover:bg-gray-400 transition duration-300" id="deletePostBtn" type="button">
+       Delete a Post
+      </button>
+      <button class="bg-gray-100 text-gray-600 px-6 py-3 rounded-md font-semibold hover:bg-gray-200 transition duration-300" id="cancelPostBtn" type="button">
+       Cancel
+      </button>
+     </div>
+    </form>
+   </section>
+   <!-- Delete Post Modal -->
+   <div aria-labelledby="deleteModalTitle" aria-modal="true" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden" id="deleteModal" role="dialog">
+    <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative" role="document">
+     <h3 class="text-2xl font-extrabold text-red-700 mb-4 text-center" id="deleteModalTitle">
+      Delete a House Listing
+     </h3>
+     <form class="space-y-4" id="deleteForm" novalidate="">
+      <div>
+       <label class="block text-red-700 font-semibold mb-1" for="deletePassword">
+        Password
+       </label>
+       <input autocomplete="off" class="w-full border border-red-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" id="deletePassword" name="deletePassword" required="" type="password"/>
+      </div>
+      <div>
+       <label class="block text-red-700 font-semibold mb-1" for="deleteCaptchaAnswer">
+        Captcha:
+        <span class="inline-block font-mono" id="deleteCaptchaText">
+        </span>
+       </label>
+       <input autocomplete="off" class="w-full border border-red-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" id="deleteCaptchaAnswer" name="deleteCaptchaAnswer" required="" type="text"/>
+      </div>
+      <div>
+       <label class="block text-red-700 font-semibold mb-1" for="deletePostSelect">
+        Select Post to Delete
+       </label>
+       <select class="w-full border border-red-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500" id="deletePostSelect" name="deletePostSelect" required="">
+        <!-- Options dynamically populated -->
+       </select>
+      </div>
+      <div class="flex justify-center space-x-6 pt-4">
+       <button class="bg-red-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-red-800 transition duration-300" type="submit">
+        Delete
+       </button>
+       <button class="bg-gray-100 text-gray-600 px-6 py-3 rounded-md font-semibold hover:bg-gray-200 transition duration-300" id="cancelDeleteBtn" type="button">
+        Cancel
+       </button>
+      </div>
+     </form>
+    </div>
+   </div>
+  </main>
+  <footer class="bg-red-700 text-white py-6 text-center font-semibold select-none">
+   © 2025 Leonora's Bahay - Santa Rosa City, Laguna, Philippines | SMDC
+  </footer>
+  <script>
+   (() => {
+      // Language toggle
+      const btnEnglish = document.getElementById('btnEnglish');
+      const btnFilipino = document.getElementById('btnFilipino');
+      const enSection = document.getElementById('presentation');
+      const filSection = document.getElementById('presentation-fil');
+
+      btnEnglish.addEventListener('click', () => {
+        btnEnglish.classList.add('bg-red-700', 'text-white');
+        btnEnglish.classList.remove('bg-gray-300', 'text-gray-800');
+        btnEnglish.setAttribute('aria-pressed', 'true');
+
+        btnFilipino.classList.remove('bg-red-700', 'text-white');
+        btnFilipino.classList.add('bg-gray-300', 'text-gray-800');
+        btnFilipino.setAttribute('aria-pressed', 'false');
+
+        enSection.classList.remove('hidden');
+        filSection.classList.add('hidden');
+      });
+
+      btnFilipino.addEventListener('click', () => {
+        btnFilipino.classList.add('bg-red-700', 'text-white');
+        btnFilipino.classList.remove('bg-gray-300', 'text-gray-800');
+        btnFilipino.setAttribute('aria-pressed', 'true');
+
+        btnEnglish.classList.remove('bg-red-700', 'text-white');
+        btnEnglish.classList.add('bg-gray-300', 'text-gray-800');
+        btnEnglish.setAttribute('aria-pressed', 'false');
+
+        filSection.classList.remove('hidden');
+        enSection.classList.add('hidden');
+      });
+
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenuBtn.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.remove('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Post section toggle (desktop and mobile)
+      const togglePostBtn = document.getElementById('togglePostBtn');
+      const togglePostBtnMobile = document.getElementById('togglePostBtnMobile');
+      const postSection = document.getElementById('postSection');
+      const cancelPostBtn = document.getElementById('cancelPostBtn');
+
+      function togglePostSection() {
+        if (postSection.classList.contains('hidden')) {
+          postSection.classList.remove('hidden');
+          togglePostBtn.setAttribute('aria-expanded', 'true');
+          togglePostBtnMobile.setAttribute('aria-expanded', 'true');
+          // Scroll to post section
+          postSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          postSection.classList.add('hidden');
+          togglePostBtn.setAttribute('aria-expanded', 'false');
+          togglePostBtnMobile.setAttribute('aria-expanded', 'false');
+        }
+      }
+
+      togglePostBtn.addEventListener('click', togglePostSection);
+      togglePostBtnMobile.addEventListener('click', togglePostSection);
+      cancelPostBtn.addEventListener('click', () => {
+        postSection.classList.add('hidden');
+        togglePostBtn.setAttribute('aria-expanded', 'false');
+        togglePostBtnMobile.setAttribute('aria-expanded', 'false');
+      });
+
+      // Captcha generation and validation
+      function generateCaptcha() {
+        // Hard captcha: random math expression with +, -, * (no division)
+        const operators = ['+', '-', '*'];
+        const op = operators[Math.floor(Math.random() * operators.length)];
+        let a, b, question, answer;
+
+        if (op === '*') {
+          a = Math.floor(Math.random() * 12) + 1; // 1 to 12
+          b = Math.floor(Math.random() * 12) + 1;
+        } else {
+          a = Math.floor(Math.random() * 50) + 1; // 1 to 50
+          b = Math.floor(Math.random() * 50) + 1;
+        }
+
+        question = `${a} ${op} ${b}`;
+        switch (op) {
+          case '+':
+            answer = a + b;
+            break;
+          case '-':
+            answer = a - b;
+            break;
+          case '*':
+            answer = a * b;
+            break;
+        }
+        return { question, answer };
+      }
+
+      // Post captcha
+      const captchaText = document.getElementById('captchaText');
+      const captchaAnswerInput = document.getElementById('captchaAnswer');
+      let currentCaptchaAnswer = null;
+
+      function refreshCaptcha() {
+        const { question, answer } = generateCaptcha();
+        captchaText.textContent = question + ' = ?';
+        currentCaptchaAnswer = answer.toString();
+        captchaAnswerInput.value = '';
+      }
+      refreshCaptcha();
+
+      // Delete captcha
+      const deleteCaptchaText = document.getElementById('deleteCaptchaText');
+      const deleteCaptchaAnswerInput = document.getElementById('deleteCaptchaAnswer');
+      let currentDeleteCaptchaAnswer = null;
+
+      function refreshDeleteCaptcha() {
+        const { question, answer } = generateCaptcha();
+        deleteCaptchaText.textContent = question + ' = ?';
+        currentDeleteCaptchaAnswer = answer.toString();
+        deleteCaptchaAnswerInput.value = '';
+      }
+
+      // Posts storage and rendering
+      const postsContainer = document.getElementById('postsContainer');
+      const postForm = document.getElementById('postForm');
+      const PASSWORD = 'SMDC§45b4d6831fe!';
+
+      // Load posts from localStorage
+      function loadPosts() {
+        const postsJSON = localStorage.getItem('leonorasBahayPosts');
+        if (!postsJSON) return [];
+        try {
+          const posts = JSON.parse(postsJSON);
+          if (Array.isArray(posts)) return posts;
+          return [];
+        } catch {
+          return [];
+        }
+      }
+
+      // Save posts to localStorage
+      function savePosts(posts) {
+        localStorage.setItem('leonorasBahayPosts', JSON.stringify(posts));
+      }
+
+      // Format date and time nicely
+      function formatDateTime(dateStr) {
+        const d = new Date(dateStr);
+        if (isNaN(d)) return '';
+        return d.toLocaleString('en-PH', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true,
+        });
+      }
+
+      // Create post card element
+      function createPostCard(post, index) {
+        const card = document.createElement('article');
+        card.className =
+          'bg-white rounded-lg shadow-md overflow-hidden flex flex-col';
+
+        // Images container
+        const imagesContainer = document.createElement('div');
+        imagesContainer.className = 'flex overflow-x-auto space-x-2 p-2 bg-red-50';
+
+        post.images.forEach((imgData, i) => {
+          const img = document.createElement('img');
+          img.src = imgData.dataUrl;
+          img.alt = `House image ${i + 1} for listing at ${post.address}`;
+          img.className = 'h-48 w-auto rounded-md flex-shrink-0 object-cover';
+          imagesContainer.appendChild(img);
+        });
+
+        card.appendChild(imagesContainer);
+
+        // Content container
+        const content = document.createElement('div');
+        content.className = 'p-4 flex flex-col flex-grow';
+
+        // Address
+        const addressEl = document.createElement('h3');
+        addressEl.className = 'text-xl font-bold text-red-700 mb-1';
+        addressEl.textContent = post.address;
+        content.appendChild(addressEl);
+
+        // Description
+        const descEl = document.createElement('p');
+        descEl.className = 'text-gray-700 flex-grow whitespace-pre-wrap mb-3';
+        descEl.textContent = post.description;
+        content.appendChild(descEl);
+
+        // Price
+        const priceEl = document.createElement('p');
+        priceEl.className = 'text-red-800 font-extrabold text-lg mb-2';
+        priceEl.textContent = `₱ ${Number(post.price).toLocaleString('en-PH')}`;
+        content.appendChild(priceEl);
+
+        // Date/time
+        const dateEl = document.createElement('p');
+        dateEl.className = 'text-gray-500 text-sm italic';
+        dateEl.textContent = `Posted on: ${formatDateTime(post.datetime)}`;
+        content.appendChild(dateEl);
+
+        card.appendChild(content);
+
+        return card;
+      }
+
+      // Render all posts
+      function renderPosts() {
+        const posts = loadPosts();
+        postsContainer.innerHTML = '';
+        if (posts.length === 0) {
+          const noPostsMsg = document.createElement('p');
+          noPostsMsg.className = 'text-center text-gray-600 col-span-full';
+          noPostsMsg.textContent = 'No house listings available.';
+          postsContainer.appendChild(noPostsMsg);
+          return;
+        }
+        posts.forEach((post, i) => {
+          const card = createPostCard(post, i);
+          postsContainer.appendChild(card);
+        });
+      }
+
+      renderPosts();
+
+      // Description character count update
+      const postDescription = document.getElementById('postDescription');
+      const descCount = document.getElementById('descCount');
+      postDescription.addEventListener('input', () => {
+        const len = postDescription.value.length;
+        descCount.textContent = `${len} / 1000`;
+      });
+
+      // Validate and handle post form submission
+      postForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Validate password
+        const password = postForm.postPassword.value.trim();
+        if (password !== PASSWORD) {
+          alert('Incorrect password.');
+          return;
+        }
+
+        // Validate captcha
+        const captchaInput = postForm.captchaAnswer.value.trim();
+        if (captchaInput !== currentCaptchaAnswer) {
+          alert('Incorrect captcha answer.');
+          refreshCaptcha();
+          return;
+        }
+
+        // Validate address
+        const address = postForm.postAddress.value.trim();
+        if (!address) {
+          alert('Address is required.');
+          return;
+        }
+
+        // Validate description
+        const description = postForm.postDescription.value.trim();
+        if (!description || description.length > 1000) {
+          alert('Description is required and must be 1000 characters or less.');
+          return;
+        }
+
+        // Validate price
+        const price = postForm.postPrice.value.trim();
+        if (!price || isNaN(price) || Number(price) < 0) {
+          alert('Price must be a valid non-negative number.');
+          return;
+        }
+
+        // Validate images
+        const files = postForm.postImages.files;
+        if (!files || files.length === 0 || files.length > 3) {
+          alert('Please upload between 1 and 3 images.');
+          return;
+        }
+
+        // Read images as data URLs
+        const images = [];
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          if (!file.type.startsWith('image/')) {
+            alert('Only image files are allowed.');
+            return;
+          }
+          try {
+            const dataUrl = await readFileAsDataURL(file);
+            images.push({ name: file.name, dataUrl });
+          } catch {
+            alert('Failed to read image files.');
+            return;
+          }
+        }
+
+        // Create post object
+        const newPost = {
+          id: crypto.randomUUID(),
+          address,
+          description,
+          price: Number(price),
+          images,
+          datetime: new Date().toISOString(),
+        };
+
+        // Save post
+        const posts = loadPosts();
+        posts.unshift(newPost);
+        savePosts(posts);
+
+        // Reset form
+        postForm.reset();
+        descCount.textContent = '0 / 1000';
+        refreshCaptcha();
+
+        // Hide post section
+        postSection.classList.add('hidden');
+        togglePostBtn.setAttribute('aria-expanded', 'false');
+        togglePostBtnMobile.setAttribute('aria-expanded', 'false');
+
+        // Re-render posts
+        renderPosts();
+
+        alert('House listing posted successfully!');
+      });
+
+      // Helper to read file as data URL
+      function readFileAsDataURL(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = () => reject();
+          reader.readAsDataURL(file);
+        });
+      }
+
+      // Delete post modal and logic
+      const deletePostBtn = document.getElementById('deletePostBtn');
+      const deleteModal = document.getElementById('deleteModal');
+      const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+      const deleteForm = document.getElementById('deleteForm');
+      const deletePostSelect = document.getElementById('deletePostSelect');
+
+      function openDeleteModal() {
+        populateDeleteSelect();
+        refreshDeleteCaptcha();
+        deleteModal.classList.remove('hidden');
+        deleteModal.querySelector('input, select, button').focus();
+      }
+
+      function closeDeleteModal() {
+        deleteModal.classList.add('hidden');
+        deleteForm.reset();
+      }
+
+      deletePostBtn.addEventListener('click', openDeleteModal);
+      cancelDeleteBtn.addEventListener('click', closeDeleteModal);
+
+      // Populate delete select options
+      function populateDeleteSelect() {
+        const posts = loadPosts();
+        deletePostSelect.innerHTML = '';
+        if (posts.length === 0) {
+          const option = document.createElement('option');
+          option.value = '';
+          option.textContent = 'No posts available';
+          option.disabled = true;
+          option.selected = true;
+          deletePostSelect.appendChild(option);
+          return;
+        }
+        posts.forEach((post) => {
+          const option = document.createElement('option');
+          option.value = post.id;
+          const shortDesc =
+            post.description.length > 40
+              ? post.description.slice(0, 37) + '...'
+              : post.description;
+          option.textContent = `${post.address} - ₱${Number(post.price).toLocaleString('en-PH')} - ${shortDesc}`;
+          deletePostSelect.appendChild(option);
+        });
+      }
+
+      // Handle delete form submission
+      deleteForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Validate password
+        const password = deleteForm.deletePassword.value.trim();
+        if (password !== PASSWORD) {
+          alert('Incorrect password.');
+          return;
+        }
+
+        // Validate captcha
+        const captchaInput = deleteForm.deleteCaptchaAnswer.value.trim();
+        if (captchaInput !== currentDeleteCaptchaAnswer) {
+          alert('Incorrect captcha answer.');
+          refreshDeleteCaptcha();
+          return;
+        }
+
+        // Validate selected post
+        const postId = deleteForm.deletePostSelect.value;
+        if (!postId) {
+          alert('Please select a post to delete.');
+          return;
+        }
+
+        // Delete post
+        let posts = loadPosts();
+        const index = posts.findIndex((p) => p.id === postId);
+        if (index === -1) {
+          alert('Selected post not found.');
+          return;
+        }
+        posts.splice(index, 1);
+        savePosts(posts);
+
+        // Close modal and re-render posts
+        closeDeleteModal();
+        renderPosts();
+
+        alert('House listing deleted successfully!');
+      });
+
+      // Accessibility: close modal on Escape key
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (!postSection.classList.contains('hidden')) {
+            postSection.classList.add('hidden');
+            togglePostBtn.setAttribute('aria-expanded', 'false');
+            togglePostBtnMobile.setAttribute('aria-expanded', 'false');
+          }
+          if (!deleteModal.classList.contains('hidden')) {
+            closeDeleteModal();
+          }
+        }
+      });
+    })();
+  </script>
+ </body>
+</html>
